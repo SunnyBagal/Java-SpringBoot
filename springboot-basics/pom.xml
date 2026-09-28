@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  pom.xml = "Project Object Model". This is Maven's config file.
+  Maven is the BUILD TOOL: it downloads libraries (dependencies), compiles
+  the code, runs tests and packages the app into a runnable .jar file.
+
+  You never download .jar libraries by hand - you list them here and Maven
+  fetches them from Maven Central (the internet's big Java library store).
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!--
+	  PARENT: inherit Spring Boot's defaults. It decides compatible VERSIONS for
+	  all Spring libraries, so below we can list dependencies WITHOUT versions.
+	-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.1.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<!-- Coordinates that identify THIS project: groupId (usually reversed domain) + artifactId -->
+	<groupId>com.sunny</groupId>
+	<artifactId>springboot-basics</artifactId>
+	<version>0.0.1-SNAPSHOT</version> <!-- SNAPSHOT = still in development -->
+	<name>springboot-basics</name>
+	<description>Spring Boot basics for beginners</description>
+
+	<properties>
+		<java.version>21</java.version>
+	</properties>
+
+	<!--
+	  DEPENDENCIES = libraries our app uses.
+	  "Starters" are bundles: one starter pulls in everything needed for a feature.
+	-->
+	<dependencies>
+		<!-- Build REST APIs / web apps. Includes Spring MVC, JSON support (Jackson) and an embedded Tomcat server -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
+
+		<!-- Talk to a database using Java objects (JPA + Hibernate) instead of writing SQL by hand -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- Validate incoming data with annotations like @NotBlank, @Email, @Min -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+		<!-- H2 = a tiny database that lives IN MEMORY. No install needed; data resets on restart. Perfect for learning -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope> <!-- only needed when the app runs, not to compile -->
+		</dependency>
+
+		<!-- A web page to look inside the H2 database: http://localhost:8080/h2-console -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-h2console</artifactId>
+		</dependency>
+
+		<!-- ===== Test-only libraries (JUnit, Mockito, MockMvc...). scope=test means they are NOT in the final app ===== -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Lets you run "./mvnw spring-boot:run" and builds a single runnable .jar -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
