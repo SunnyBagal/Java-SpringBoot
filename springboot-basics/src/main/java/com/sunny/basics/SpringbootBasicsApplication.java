@@ -53,6 +53,6 @@ public class SpringbootBasicsApplication {
  *
  *  ... Starting SpringbootBasicsApplication using Java 21 ...
  *  ... Tomcat started on port 8080 (http) with context path '/'
- *  ... Started SpringbootBasicsApplication in 2.1 seconds
+ *  ... Started SpringbootBasicsApplication in 2.8 seconds  (time varies)
  * -------------------------------------------------------------------
  */
