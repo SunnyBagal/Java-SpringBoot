@@ -1,14 +1,14 @@
-# Java & Spring Boot — Learning Journey
+# Java & Spring Boot: Learning Journey
 
 My notes and practice code while learning **Java** from scratch and then **Spring Boot**.
+Every example has line-by-line comments and its real output.
 
 ## Roadmap
 
-| Stage | Folder | Status |
-|-------|--------|--------|
-| 1. Java basics | [`basics/`](basics/) | In progress |
-| 2. Advanced Java (collections, streams, generics) | coming soon | Planned |
-| 3. Spring Boot | coming soon | Planned |
+| Stage | Folder | What's inside |
+|-------|--------|---------------|
+| 1. Java basics | [`java-basics/`](java-basics/) | 33 topics: syntax, control flow, arrays, methods, OOP, collections, exceptions, lambdas, streams, records |
+| 2. Spring Boot basics | [`springboot-basics/`](springboot-basics/) | 7 lessons: REST APIs, dependency injection, configuration, validation, exception handling, JPA + H2 database, testing |
 
 ## Setup (one time)
 
@@ -16,14 +16,15 @@ My notes and practice code while learning **Java** from scratch and then **Sprin
    ```bash
    brew install openjdk@21
    ```
+   Homebrew prints a `sudo ln -sfn ...` command at the end. Run it so `java` works everywhere.
 2. Check it works:
    ```bash
    java -version
    ```
 
-## How to run any example
+## How to run
 
-Every example is a single `.java` file. From inside its folder:
+**Java examples**: every example is a single `.java` file. From inside its folder:
 
 ```bash
 # Option A (quickest, Java 11+): compile and run in one step
@@ -32,4 +33,12 @@ java HelloWorld.java
 # Option B (the classic way): compile first, then run
 javac HelloWorld.java   # creates HelloWorld.class (bytecode)
 java HelloWorld         # runs the bytecode on the JVM
+```
+
+**Spring Boot app**:
+
+```bash
+cd springboot-basics
+./mvnw spring-boot:run     # then open http://localhost:8080/hello
+./mvnw test                # run the tests
 ```
