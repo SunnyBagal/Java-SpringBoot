@@ -21,6 +21,10 @@ Every example has line-by-line comments and its real output.
    ```bash
    java -version
    ```
+   If it says *"Unable to locate a Java Runtime"*, the JDK is installed but not linked yet:
+   ```bash
+   sudo ln -sfn /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-21.jdk
+   ```
 
 ## How to run
 
